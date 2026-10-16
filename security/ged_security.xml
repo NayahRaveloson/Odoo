@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="module_category_ged" model="ir.module.category">
+        <field name="name">GED</field>
+        <field name="sequence">100</field>
+    </record>
+
+    <record id="group_ged_user" model="res.groups">
+        <field name="name">Utilisateur GED</field>
+        <field name="category_id" ref="module_category_ged"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="group_ged_manager" model="res.groups">
+        <field name="name">Gestionnaire GED</field>
+        <field name="category_id" ref="module_category_ged"/>
+        <field name="implied_ids" eval="[(4, ref('group_ged_user'))]"/>
+    </record>
+
+    <record id="group_ged_admin" model="res.groups">
+        <field name="name">Administrateur GED</field>
+        <field name="category_id" ref="module_category_ged"/>
+        <field name="implied_ids" eval="[(4, ref('group_ged_manager'))]"/>
+    </record>
+
+    <record id="base.group_system" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('group_ged_admin'))]"/>
+    </record>
+</odoo>

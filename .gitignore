@@ -1,0 +1,38 @@
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Environnement virtuel
+venv/
+.venv/
+env/
+
+# Variables d'environnement et secrets
+.env
+.env.*
+!.env.example
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# Tests
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Fichiers compilés Odoo
+*.mo
+
+# Système
+.DS_Store
+Thumbs.db
+Desktop.ini

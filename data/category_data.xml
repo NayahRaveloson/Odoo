@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="category_contrat" model="ged.category">
+            <field name="name">Contrat</field>
+            <field name="description">Contrats signés ou à signer</field>
+        </record>
+        <record id="category_facture" model="ged.category">
+            <field name="name">Facture</field>
+            <field name="description">Factures clients et fournisseurs</field>
+        </record>
+        <record id="category_rapport" model="ged.category">
+            <field name="name">Rapport</field>
+            <field name="description">Rapports et comptes rendus</field>
+        </record>
+        <record id="category_courrier" model="ged.category">
+            <field name="name">Courrier</field>
+            <field name="description">Courriers reçus et envoyés</field>
+        </record>
+        <record id="category_procedure" model="ged.category">
+            <field name="name">Procédure</field>
+            <field name="description">Procédures internes</field>
+        </record>
+        <record id="category_autres" model="ged.category">
+            <field name="name">Autres</field>
+            <field name="description">Documents divers</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_ged_root" name="GED"
+              web_icon="ged_simple,static/description/icon.png"
+              groups="group_ged_user" sequence="10"/>
+
+    <menuitem id="menu_ged_dashboard" name="Tableau de bord"
+              parent="menu_ged_root" action="action_ged_dashboard" sequence="10"/>
+    <menuitem id="menu_ged_document" name="Documents"
+              parent="menu_ged_root" action="action_ged_document" sequence="20"/>
+    <menuitem id="menu_ged_folder" name="Dossiers"
+              parent="menu_ged_root" action="action_ged_folder" sequence="30"/>
+    <menuitem id="menu_ged_category" name="Catégories"
+              parent="menu_ged_root" action="action_ged_category" sequence="40"/>
+</odoo>

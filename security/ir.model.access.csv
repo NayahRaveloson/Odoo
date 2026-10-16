@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ged_document_user,ged.document user,model_ged_document,group_ged_user,1,0,0,0
+access_ged_document_manager,ged.document manager,model_ged_document,group_ged_manager,1,1,1,0
+access_ged_document_admin,ged.document admin,model_ged_document,group_ged_admin,1,1,1,1
+access_ged_folder_user,ged.folder user,model_ged_folder,group_ged_user,1,0,0,0
+access_ged_folder_manager,ged.folder manager,model_ged_folder,group_ged_manager,1,1,1,0
+access_ged_folder_admin,ged.folder admin,model_ged_folder,group_ged_admin,1,1,1,1
+access_ged_category_user,ged.category user,model_ged_category,group_ged_user,1,0,0,0
+access_ged_category_manager,ged.category manager,model_ged_category,group_ged_manager,1,1,1,0
+access_ged_category_admin,ged.category admin,model_ged_category,group_ged_admin,1,1,1,1
+access_ged_dashboard_user,ged.dashboard user,model_ged_dashboard,group_ged_user,1,1,0,0
+access_ged_dashboard_admin,ged.dashboard admin,model_ged_dashboard,group_ged_admin,1,1,1,1

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ged_dashboard_form" model="ir.ui.view">
+        <field name="name">ged.dashboard.form</field>
+        <field name="model">ged.dashboard</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0" delete="0">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_all" type="object"
+                                class="oe_stat_button" icon="fa-files-o">
+                            <field name="total_count" widget="statinfo" string="Documents"/>
+                        </button>
+                        <button name="action_open_draft" type="object"
+                                class="oe_stat_button" icon="fa-pencil">
+                            <field name="draft_count" widget="statinfo" string="Brouillons"/>
+                        </button>
+                        <button name="action_open_validated" type="object"
+                                class="oe_stat_button" icon="fa-check">
+                            <field name="validated_count" widget="statinfo" string="Validés"/>
+                        </button>
+                        <button name="action_open_archived" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="archived_count" widget="statinfo" string="Archivés"/>
+                        </button>
+                    </div>
+                    <h1><field name="name"/></h1>
+                    <separator string="Derniers documents créés"/>
+                    <field name="last_document_ids" nolabel="1" readonly="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="folder_id"/>
+                            <field name="category_id"/>
+                            <field name="date_creation"/>
+                            <field name="state" widget="badge"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_ged_dashboard" model="ir.actions.server">
+        <field name="name">Tableau de bord</field>
+        <field name="model_id" ref="model_ged_dashboard"/>
+        <field name="state">code</field>
+        <field name="code">action = model.action_open_dashboard()</field>
+    </record>
+</odoo>

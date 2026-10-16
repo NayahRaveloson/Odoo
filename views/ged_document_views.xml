@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_ged_document_list" model="ir.ui.view">
+        <field name="name">ged.document.list</field>
+        <field name="model">ged.document</field>
+        <field name="arch" type="xml">
+            <list decoration-success="state == 'validated'" decoration-muted="state == 'archived'">
+                <field name="name"/>
+                <field name="folder_id"/>
+                <field name="category_id"/>
+                <field name="user_id"/>
+                <field name="date_creation"/>
+                <field name="state" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_ged_document_form" model="ir.ui.view">
+        <field name="name">ged.document.form</field>
+        <field name="model">ged.document</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_validate" string="Valider" type="object"
+                            class="btn-primary" invisible="state != 'draft'"
+                            groups="ged_simple.group_ged_manager"/>
+                    <button name="action_set_archived" string="Archiver" type="object"
+                            invisible="state != 'validated'"
+                            groups="ged_simple.group_ged_manager"/>
+                    <button name="action_set_draft" string="Remettre en brouillon" type="object"
+                            invisible="state == 'draft'"
+                            groups="ged_simple.group_ged_manager"/>
+                    <button name="action_download" string="Télécharger" type="object"
+                            invisible="not file"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,validated,archived"/>
+                </header>
+                <sheet>
+                    <h1>
+                        <field name="name" placeholder="Nom du document"/>
+                    </h1>
+                    <group>
+                        <group string="Classement">
+                            <field name="folder_id"/>
+                            <field name="category_id"/>
+                            <field name="user_id"/>
+                        </group>
+                        <group string="Fichier">
+                            <field name="file" filename="file_name"/>
+                            <field name="file_name" invisible="1"/>
+                            <field name="date_creation"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_ged_document_search" model="ir.ui.view">
+        <field name="name">ged.document.search</field>
+        <field name="model">ged.document</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" string="Nom"/>
+                <field name="folder_id"/>
+                <field name="category_id"/>
+                <field name="user_id"/>
+                <field name="state"/>
+
+                <filter string="Brouillons" name="filter_draft"
+                        domain="[('state', '=', 'draft')]"/>
+                <filter string="Validés" name="filter_validated"
+                        domain="[('state', '=', 'validated')]"/>
+                <filter string="Archivés" name="filter_archived"
+                        domain="[('state', '=', 'archived')]"/>
+
+                <group string="Regrouper par">
+                    <filter string="Dossier" name="group_folder"
+                            context="{'group_by': 'folder_id'}"/>
+                    <filter string="Catégorie" name="group_category"
+                            context="{'group_by': 'category_id'}"/>
+                    <filter string="Responsable" name="group_user"
+                            context="{'group_by': 'user_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_ged_document" model="ir.actions.act_window">
+        <field name="name">Documents</field>
+        <field name="res_model">ged.document</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_ged_document_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Créez votre premier document</p>
+        </field>
+    </record>
+</odoo>
